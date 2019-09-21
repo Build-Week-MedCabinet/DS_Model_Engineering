@@ -14,6 +14,12 @@
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+### Important Links
+
+* [Build-Week-Med-Cabinet Repository](https://github.com/Build-Week-Med-Cabinet/)
+* [Trello task management](trello.com)
+* [Product Vision Document](https://docs.google.com/document/d/1p2ubrQoOpv5yrzj9yZ-4cZuBkqywU5BCpT5pxPXeYBM/edit?usp=sharing)
+
 ### Prerequisites
 
 Python >= 3.6.8
