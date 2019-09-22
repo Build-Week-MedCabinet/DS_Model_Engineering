@@ -25,7 +25,11 @@ SECRET_KEY = '8nq+*4j(8&v*&66w^f$v85^323w!zqfdwqnmc6psra7-ihoq%s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Allow connectiosn from any IP address; buggy in development.  Add IP address of computer running django if trouble.
+if DEBUG == True:
+    ALLOWED_HOSTS = ['192.168.43.147', '192.168.0.1/0', ]
+else:
+    ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -37,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +123,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Enable pagination
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
