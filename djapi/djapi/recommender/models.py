@@ -20,10 +20,17 @@ class UserRating(Model):
     userclass = CharField(
         choices=user_class_choices,
         default='default',
-        max_length=100)
+        max_length=100,
+        blank=True)
     # Ratings must be scaled down to 1-5 per kaggle dataset original data or
     #  updated recommendations will be skewed.
     # These validators may not work in API context.
+    strain_name = CharField(
+        max_length=100,
+        blank=False,
+        editable=True,
+        default='default'
+    )
     rating = IntegerField(
         default=0,
         validators=[
