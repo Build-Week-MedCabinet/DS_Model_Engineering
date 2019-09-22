@@ -1,10 +1,12 @@
-from django.db.models import Model, DateTimeField, CharField, IntegerField, TextField
+from django.db.models import \
+    (Model, DateTimeField, CharField, IntegerField, TextField)
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # User Classes
 # Creates options list for UserRating.userclass
 user_classes = ['default', 'recreational', 'medical']
+user_class_choices = sorted(zip(range(len(user_classes)), user_classes))
 
 
 # User Ratings Model for online analysis, updating the recommender ranking
@@ -16,7 +18,7 @@ class UserRating(Model):
         blank=True,
         default='defaultuser')
     userclass = CharField(
-        choices=user_classes,
+        choices=user_class_choices,
         default='default',
         max_length=100)
     # Ratings must be scaled down to 1-5 per kaggle dataset original data or
@@ -30,7 +32,7 @@ class UserRating(Model):
         ])
 
     class Meta:
-        ordering = ('created')
+        ordering = ['created']
 
 
 # Class for storing strain data.
@@ -58,4 +60,4 @@ class Strains(Model):
     strain_desc_embed = TextField(blank=True, editable=True)
 
     class Meta:
-        ordered = ('created')
+        ordering = ['created']

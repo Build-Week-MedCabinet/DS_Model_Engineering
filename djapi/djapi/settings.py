@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    # 'recommender'  # may not be required
+    'djapi.recommender'  # may not be required
 ]
 
 MIDDLEWARE = [
