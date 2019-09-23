@@ -16,18 +16,20 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Important Links
 
-* [Build-Week-Med-Cabinet Repository](https://github.com/Build-Week-Med-Cabinet/)
+* [Build-Week-Med-Cabinet Repository](https://github.com/Build-Week-Med-Cabinet/DS)
 * [Trello task management](trello.com)
 * [Product Vision Document](https://docs.google.com/document/d/1p2ubrQoOpv5yrzj9yZ-4cZuBkqywU5BCpT5pxPXeYBM/edit?usp=sharing)
 
 ### Prerequisites
 
 Python >= 3.6.8
-Anaconda or MiniConda
+Anaconda or MiniConda or Pip
 
 ### Installing
 
 #### Django development environment
+
+* Conda: ?)
 
 
 #### ETL development environment
@@ -65,5 +67,13 @@ See also the list of [contributors](https://github.com/your/project/contributors
 ## License
 
 This project is licensed under the XXX License - see the [LICENSE.md](LICENSE.md) file for details
+
+
+## Contributors
+
+**Backend** Developers:
+* [Louie Williford](https://github.com/dustyfingers)
+* [Landry Irakoze](https://github.com/LandryIrakoze)
+
 
 ## Acknowledgments
