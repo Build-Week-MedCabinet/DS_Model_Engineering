@@ -68,12 +68,10 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 This project is licensed under the XXX License - see the [LICENSE.md](LICENSE.md) file for details
 
-
 ## Contributors
 
 **Backend** Developers:
 * [Louie Williford](https://github.com/dustyfingers)
 * [Landry Irakoze](https://github.com/LandryIrakoze)
-
 
 ## Acknowledgments

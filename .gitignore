@@ -5,3 +5,4 @@
 # File patterns to ignore
 *.log
 *.env
+*.vscode
