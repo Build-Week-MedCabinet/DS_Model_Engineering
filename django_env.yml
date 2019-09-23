@@ -1,4 +1,4 @@
-# run: conda env create --file flask_env_09-2019.yml
+# run: conda env create --file django_env.yml
 name: django-api
 channels:
 - defaults
@@ -7,9 +7,10 @@ dependencies:
 # - gunicorn
 - matplotlib=3.0.3
 - numpy=1.16.2
-- pandas=0.24.1
+- pandas=0.25.1
 - pip=19.1
 - psycopg2=2.7.7
+- pylint
 - pytest=5.1
 - python=3.7.3
 - requests=2.21.0
@@ -17,13 +18,12 @@ dependencies:
 - scipy=1.2.0
 - scikit-learn=0.19.2
 - pip:
-  - joblib==0.11.0
-  - ujson
-  - django
-  - djangorestframework
-  - markdown
-  - django-filter
   - coreapi
-  - Markdown
-  - Pygments
+  - django==2.2.5
+  - django-filter
   - django-guardian
+  - djangorestframework
+  - joblib==0.11.0
+  - markdown
+  - Pygments
+  - ujson

@@ -1,0 +1,7 @@
+# Directory patterns to ignore
+**/logs
+**/__pycache__
+
+# File patterns to ignore
+*.log
+*.env
