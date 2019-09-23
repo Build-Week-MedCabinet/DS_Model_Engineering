@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from .models import UserRating, Strains
+from .models import UserRating, Strain
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -24,9 +24,9 @@ class UserRatingSerializer(serializers.HyperlinkedModelSerializer):
             ]
 
 
-class StrainsSerializer(serializers.HyperlinkedModelSerializer):
+class StrainSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Strains
+        model = Strain
         fields = [
             'created', 'updated',
             'strain_name', 'strain_effect_list', 'strain_flavor_list',
