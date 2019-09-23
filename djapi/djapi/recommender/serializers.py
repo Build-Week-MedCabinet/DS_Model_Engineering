@@ -30,6 +30,6 @@ class StrainSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             'created', 'updated',
             'strain_name', 'strain_effect_list', 'strain_flavor_list',
-            'strain_desc', 'strain_effect_embed', 'strain_flavor_embed',
-            'strain_desc_embed'
+            'strain_desc',
+            # 'strain_effect_embed', 'strain_flavor_embed', 'strain_desc_embed'
             ]

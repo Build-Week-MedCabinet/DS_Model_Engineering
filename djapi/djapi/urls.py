@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework import routers
 from djapi.recommender import views
 
@@ -22,13 +23,13 @@ from djapi.recommender import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
-
+router.register(r'strains', views.StrainViewSet)
+router.register(r'userratings', views.UserRatingViewSet)  # Not implemented in model.
 
 # Wire up API using automatic URL routing
 # Additionally, including login URLs for the browsable API
 urlpatterns = [
     path('', include(router.urls)),
+    path('recommend/', views.recommender_view),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('strains/', views.strain_list),
-    path('strains/<int:pk>/', views.strain_detail),
 ]

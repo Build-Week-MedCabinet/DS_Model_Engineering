@@ -45,7 +45,8 @@ class UserRating(Model):
 # Class for storing strain data.
 # Includes both raw text information and embeddings
 class Strain(Model):
-    created = DateTimeField(auto_now=False)
+    created = DateTimeField(
+        auto_now=True)
     updated = DateTimeField(
         auto_now=True,
         editable=True)
