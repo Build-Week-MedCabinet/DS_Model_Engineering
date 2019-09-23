@@ -73,3 +73,47 @@ def strain_detail(request, pk):
         return HttpResponse(status=204)
 
 
+@csrf_exempt
+def userrating_list(request):
+    """
+    List all userratings or create new userrating
+    """
+    if request.method == 'GET':
+        userratings = UserRating.objects.all()
+        serializer = UserRatingSerializer(userratings, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = UserRatingSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
+
+
+@csrf_exempt
+def userrating_detail(request, pk):
+    """
+    Retrieve, update, or delete a userrating.
+    """
+    try:
+        userrating = UserRating.objects.get(pk=pk)
+    except userrating.DoesNotExist:
+        return HttpResponse(status=400)
+
+    if request.method == 'GET':
+        serializer = UserRatingSerializer(userrating)
+        return JsonResponse(serializer.data)
+
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = UserRatingSerializer(userrating, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data)
+        return JsonResponse(serializer.errors, status=400)
+
+    elif request.method == 'DELETE':
+        userrating.delete()
+        return HttpResponse(status=204)

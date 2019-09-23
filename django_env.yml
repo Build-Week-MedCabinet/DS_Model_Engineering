@@ -7,7 +7,7 @@ dependencies:
 # - gunicorn
 - matplotlib=3.0.3
 - numpy=1.16.2
-- pandas=0.24.1
+- pandas=0.25.1
 - pip=19.1
 - psycopg2=2.7.7
 - pylint
@@ -19,7 +19,7 @@ dependencies:
 - scikit-learn=0.19.2
 - pip:
   - coreapi
-  - django
+  - django==2.2.5
   - django-filter
   - django-guardian
   - djangorestframework
