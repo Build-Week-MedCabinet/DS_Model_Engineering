@@ -1,4 +1,4 @@
-# run: conda env create --file flask_env_09-2019.yml
+# run: conda env create --file django_env.yml
 name: django-api
 channels:
 - defaults
