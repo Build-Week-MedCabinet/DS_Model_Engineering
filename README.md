@@ -29,7 +29,19 @@ Anaconda or MiniConda or Pip
 
 #### Django development environment
 
-* Conda: ?)
+* Conda: Create a conda environment for the django application with
+
+```python
+conda env create -f django_env.yml
+```
+
+* Run server with
+
+```python
+python manage.py runserver <ip_address>:<port>
+```
+
+IP address and port are optional parameters for runserver.
 
 
 #### ETL development environment
