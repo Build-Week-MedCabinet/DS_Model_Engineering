@@ -8,6 +8,13 @@ import pickle
 import pandas as pd
 import os
 
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.neighbors import NearestNeighbors
+from sklearn.decomposition import PCA
+
+import spacy
+from spacy.tokenizer import Tokenizer
 
 ##################
 ##SET PARAMETERS##
@@ -32,21 +39,26 @@ class Predictor():
 
     def transform(self, raw_input):
         self.raw_input = raw_input
-        self.vectorized_input = self.vectorizer.transform(
+        vinput = self.vectorizer.transform(
             pd.DataFrame(
                 pd.series(raw_input).to_dense()
             )
         )
+        self.vectorized_input = vinput
+        return vinput
 
     def predict(self, vectorized_input=None, size=5):
         # Check if any data available for prediction
         if vectorized_input is None and self.vectorized_input is None:
             raise NoDataProvided
+        elif vectorized_input is None:
+            vinput = self.vectorized_input
+        else:
+            vinput = vectorized_input
 
         # If data available, use model to get 'size' number of predictions
-
-
-        return self.vectorized_input
+        results = self.model.kneighbors([vinput][0], n_neighbors=size)[1][0].tolist()
+        return results
 
 
 class Error(Exception):
