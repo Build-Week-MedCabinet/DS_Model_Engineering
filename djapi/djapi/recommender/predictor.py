@@ -18,22 +18,15 @@ from sklearn.decomposition import PCA
 import spacy
 from spacy.tokenizer import Tokenizer
 
+
 ##################
 ##SET PARAMETERS##
 ##################
 params = {
-    'engine': 'knn_02.pkl',
-    'model': 'knn_02.pkl',
-    'vectorizer': 'vectorizer_02.pkl'
+    'model': 'knn_03.pkl',
+    'vectorizer': 'vectorizer_03.pkl'
 }
 
-
-def get_engine_path(**kwargs):
-    return os.path.abspath(params['engine'])
-
-
-def get_vectorizer_path(**kwargs):
-    return os.path.abspath(params['vectorizer'])
 
 ###################
 ##BUILD PREDICTOR##
@@ -70,6 +63,9 @@ class Predictor():
         # If data available, use model to get 'size' number of predictions
         results = self.model.kneighbors([vinput][0], n_neighbors=size)[1][0].tolist()
         return results
+
+    def get_recommendation(self):
+
 
 
 class Error(Exception):
