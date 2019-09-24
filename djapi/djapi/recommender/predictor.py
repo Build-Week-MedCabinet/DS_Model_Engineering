@@ -25,6 +25,7 @@ from spacy.tokenizer import Tokenizer
 params = {
     'model': 'knn_03.pkl',
     'vectorizer': 'vectorizer_03.pkl'
+    'clean_data': ''
 }
 
 
@@ -65,7 +66,7 @@ class Predictor():
         return results
 
     def get_recommendation(self):
-
+        pass
 
 
 class Error(Exception):
