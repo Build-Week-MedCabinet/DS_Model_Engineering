@@ -34,7 +34,6 @@ try:
     print('JSON: ', r.json())
 except:
     print("Unexpected error:", sys.exc_info()[0])
-    raise
 
 
 # Test 2
@@ -42,3 +41,6 @@ except:
 predictor = predictor.Predictor()
 predictor.transform(payloads[1])
 print(predictor.predict())
+
+# Check Get_Recommendation utility to see if data from csv can be returned
+print('Recommendation:', predictor.get_recommendation())
