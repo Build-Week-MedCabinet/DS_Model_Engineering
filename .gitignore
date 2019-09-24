@@ -9,3 +9,4 @@
 *.pkl
 *.pyc
 *.sqlite3
+*.cpython
