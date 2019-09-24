@@ -60,10 +60,12 @@ def recommender_view(request):
     if request.method == 'GET':
         if request.is_ajax():
             print('ajax request found.')
+            logger.info(reqeust.body)
             return Response(request.body)
         else:
             print(request.data)
             print(request.content_type)
+            logger.info(request.data, request.content_type, request.query_params)
             return Response(request.query_params)
 
     return Response(demo_data)
