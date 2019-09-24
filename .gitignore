@@ -5,4 +5,7 @@
 # File patterns to ignore
 *.log
 *.env
+*.vscode
 *.pkl
+*.pyc
+*.sqlite3

@@ -90,5 +90,4 @@ This project is licensed under the XXX License - see the [LICENSE.md](LICENSE.md
 * [Louie Williford](https://github.com/dustyfingers)
 * [Landry Irakoze](https://github.com/LandryIrakoze)
 
-
 ## Acknowledgments
