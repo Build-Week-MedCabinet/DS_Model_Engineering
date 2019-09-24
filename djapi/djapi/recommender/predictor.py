@@ -24,8 +24,8 @@ from spacy.tokenizer import Tokenizer
 ##################
 params = {
     'model': 'knn_04.pkl',
-    'vectorizer': 'vectorizer_04.pkl'
-    'clean_data': ''
+    'vectorizer': 'vectorizer_04.pkl',
+    'clean_data': 'cannabis.csv',
 }
 
 
@@ -65,8 +65,12 @@ class Predictor():
         results = self.model.kneighbors([vinput][0], n_neighbors=size)[1][0].tolist()
         return results
 
-    def get_recommendation(self):
-        pass
+    def get_recommendation(self, size=5):
+        strain_frame = pd.read_csv(
+            get_abs_path(params['clean_data'])
+        )
+        rec_df = strain_frame.iloc[self.predict(size=size)]
+        return rec_df.to_json(orient='records')
 
 
 class Error(Exception):
