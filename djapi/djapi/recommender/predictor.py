@@ -1,18 +1,12 @@
 """
-<<<<<<< HEAD
-This library interfaces with the pickled engine.
-=======
 This library interfaces with the pickled model.
->>>>>>> django-app
 
 Using predictor:
 """
 
 import pickle
-<<<<<<< HEAD
 import os
 
-=======
 import pandas as pd
 import os
 
@@ -23,22 +17,17 @@ from sklearn.decomposition import PCA
 
 import spacy
 from spacy.tokenizer import Tokenizer
->>>>>>> django-app
 
 ##################
 ##SET PARAMETERS##
 ##################
 params = {
-<<<<<<< HEAD
     'engine': 'knn_02.pkl',
-=======
     'model': 'knn_02.pkl',
->>>>>>> django-app
     'vectorizer': 'vectorizer_02.pkl'
 }
 
 
-<<<<<<< HEAD
 def get_engine_path(**kwargs):
     return os.path.abspath(params['engine'])
 
@@ -46,12 +35,11 @@ def get_engine_path(**kwargs):
 def get_vectorizer_path(**kwargs):
     return os.path.abspath(params['vectorizer'])
 
-=======
 ###################
 ##BUILD PREDICTOR##
 ###################
 class Predictor():
-    def __init__(self, model, vectorizer):
+    def __init__(self, model=None, vectorizer=None):
         self.model = pickle.load(open(
             get_abs_path(params['model']), 'rb',
         ))
@@ -63,7 +51,7 @@ class Predictor():
         self.raw_input = raw_input
         vinput = self.vectorizer.transform(
             pd.DataFrame(
-                pd.series(raw_input).to_dense()
+                pd.Series(raw_input).to_dense()
             )
         )
         self.vectorized_input = vinput
@@ -95,5 +83,4 @@ class NoDataProvided(Error):
 
 def get_abs_path(filename, **kwargs):
     return os.path.abspath(filename)
->>>>>>> django-app
 

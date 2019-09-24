@@ -2,6 +2,9 @@ import requests
 import json
 import sys
 
+import predictor
+
+
 # SETUP PARAMETERS
 application_url = 'http://192.168.43.147:5000/'  # Changes/host.  Default on local to 127.0.0.1:80
 
@@ -9,7 +12,14 @@ application_url = 'http://192.168.43.147:5000/'  # Changes/host.  Default on loc
 # PAYLOADS
 payloads = [
     {'search_params': 'random strings, some stuff, some more stuff'},
-    {}
+    """
+    nice cherry is an indica-dominant strain that captures the flavorful
+    qualities of its cherry parent and the relaxing attributes of mr. nice. with an aroma
+    of sweet skunk, pine, and berry, nice cherry delivers a rush of cerebral energy
+    that lifts the mood while relaxing the body. it’ll also bring an edge back to your
+    appetite while providing focus to keep you productive.
+    """,
+    {'fake_flavor': 'fruity'},
 ]
 
 
@@ -29,3 +39,6 @@ except:
 
 # Test 2
 # check Predictor class makes, can return result from dummy data
+predictor = predictor.Predictor()
+predictor.transform(payloads[1])
+print(predictor.vectorized_input)

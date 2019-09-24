@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LOG_FILE = os.path.join(BASE_DIR, 'logs/debug.log')
 
 
 # Quick-start development settings - unsuitable for production
@@ -130,4 +131,25 @@ STATIC_URL = '/static/'
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
+}
+
+
+# Logging Configuration
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': LOG_FILE,
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'propagate': True,
+        },
+    },
 }
