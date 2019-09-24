@@ -60,8 +60,8 @@ class Strain(Model):
     #   formatted appropriately if using Sqlite3 database.
     # PostgreSQL offers some advance list-like and json fields, but
     #   requires setup and connection to external postgreSQL database.
-    strain_effect_list = TextField(blank=False, editable=True)
-    strain_flavor_list = TextField(blank=False, editable=True)
+    strain_effect_list = TextField(blank=True, editable=True)
+    strain_flavor_list = TextField(blank=True, editable=True)
     strain_desc = TextField(blank=True, editable=True)
     strain_effect_embed = TextField(blank=True, editable=True)
     strain_flavor_embed = TextField(blank=True, editable=True)
