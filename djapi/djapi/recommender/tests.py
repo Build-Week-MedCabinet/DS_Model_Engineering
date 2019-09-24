@@ -41,4 +41,4 @@ except:
 # check Predictor class makes, can return result from dummy data
 predictor = predictor.Predictor()
 predictor.transform(payloads[1])
-print(predictor.vectorized_input)
+print(predictor.predict())

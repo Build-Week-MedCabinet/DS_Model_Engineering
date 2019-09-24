@@ -49,11 +49,12 @@ class Predictor():
 
     def transform(self, raw_input):
         self.raw_input = raw_input
-        vinput = self.vectorizer.transform(
-            pd.DataFrame(
-                pd.Series(raw_input).to_dense()
-            )
+        vinput = pd.DataFrame(
+            self.vectorizer.transform(
+            pd.Series(raw_input)
+            ).todense()
         )
+
         self.vectorized_input = vinput
         return vinput
 
@@ -83,4 +84,3 @@ class NoDataProvided(Error):
 
 def get_abs_path(filename, **kwargs):
     return os.path.abspath(filename)
-
