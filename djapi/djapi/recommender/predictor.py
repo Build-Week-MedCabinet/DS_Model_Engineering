@@ -23,8 +23,8 @@ from spacy.tokenizer import Tokenizer
 ##SET PARAMETERS##
 ##################
 params = {
-    'model': 'knn_03.pkl',
-    'vectorizer': 'vectorizer_03.pkl'
+    'model': 'knn_04.pkl',
+    'vectorizer': 'vectorizer_04.pkl'
     'clean_data': ''
 }
 

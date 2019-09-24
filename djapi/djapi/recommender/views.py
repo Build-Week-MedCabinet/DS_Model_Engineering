@@ -60,6 +60,9 @@ def recommender_view(request):
     """
     if request.method == 'GET':
         data = process_request(request)
-        return Response(data)
+        predictor = Predictor()
+        predictor.transform(data)
+        recommendation = predictor.get_recommendation()
+        return Response(recommendation)
     else:
         return Response(status=status.HTTP_400_BAD_REQUEST)
