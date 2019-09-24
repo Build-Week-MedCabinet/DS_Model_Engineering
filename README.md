@@ -2,9 +2,8 @@
 # Data Engineering and Reccommendation for med-cabinet
 
 > ETL of data (see sources).  Data engineering provides structure/unstructure? db of strain information for returns through API and construction of structured data for recommendation engine development.
-> REST API for user search query and return of recomendatiosn from engine
+> REST API for user search query and return of recomendations from engine
 > Recommendation engine
-
 
 **Source List** of used data:
 
@@ -26,6 +25,8 @@ Python >= 3.6.8
 Anaconda or MiniConda or Pip
 
 ### Installing
+
+This application does not need to be installed.  It will run as a stanalone server with provided directories in this repository.
 
 #### Django development environment
 
@@ -68,10 +69,13 @@ Not currently deployed.  Deployment notes here.
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
+The current project is pre-alpha and not yet versioned (default 0.0.1)
+
 ## Authors
 
-* **Steve Elliott** - *Initial work* - [GitHubLink](https://github.com/)
-* **Vincent Brandon** - *Initial work* - [GitHubLink](https://github.com/)
+* **Steve Elliott** - *Transformation & Loading* - [GitHubLink](https://github.com/)
+* **Vincent Brandon** - *Django API* - [GitHubLink](https://github.com/)
+* **Eric Wuerfel** - *Recommender Engine* - GitHubLink
 
 *TODO*
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
@@ -79,7 +83,6 @@ See also the list of [contributors](https://github.com/your/project/contributors
 ## License
 
 This project is licensed under the XXX License - see the [LICENSE.md](LICENSE.md) file for details
-
 
 ## Contributors
 
