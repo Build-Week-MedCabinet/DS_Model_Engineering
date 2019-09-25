@@ -84,4 +84,9 @@ class NoDataProvided(Error):
 
 
 def get_abs_path(filename, **kwargs):
-    return os.path.abspath(filename)
+    if os.path.isfile(os.path.abspath(filename)):
+        return os.path.abspath(filename)
+    else:
+        return os.path.join(
+            os.getcwd(), 'djapi/recommender/'+filename,
+        )

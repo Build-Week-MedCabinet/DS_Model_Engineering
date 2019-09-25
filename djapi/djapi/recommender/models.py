@@ -55,6 +55,11 @@ class Strain(Model):
         blank=False,
         editable=True,
     )
+    strain_id = IntegerField(
+        max_length=None,
+        unique=True,
+        editable=True,
+    )
     # Long form information to be stored as text (huge strings).
     #   Any request trying to input data to these fields will need to be
     #   formatted appropriately if using Sqlite3 database.

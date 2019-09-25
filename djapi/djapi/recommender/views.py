@@ -8,6 +8,7 @@ from rest_framework.decorators import api_view
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
 # Custom module imports
 from djapi.recommender.serializers import (
     UserSerializer, GroupSerializer, UserRatingSerializer, StrainSerializer)
@@ -27,6 +28,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class GroupViewSet(viewsets.ModelViewSet):
