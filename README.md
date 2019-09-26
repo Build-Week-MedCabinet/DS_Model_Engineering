@@ -78,7 +78,7 @@ All endpoints are active, but not populated as of v0.1.  Users, groups, strains,
 You can access the recommender api by passing a search string to:
 
 <div>
-  <a href="https://morning-badlands-32563.herokuapp.com/recommend?some text">https://morning-badlands-32563.herokuapp.com/recommend?some text</a>
+  <a href="https://morning-badlands-32563.herokuapp.com/recommend/?some text">https://morning-badlands-32563.herokuapp.com/recommend/?some text</a>
 </div>
 
 ## Built With
