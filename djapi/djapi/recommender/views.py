@@ -1,14 +1,15 @@
 # Django/Django-RestAPI imports
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
-from django.http import JsonResponse
+from django.core.cache import cache
 # from django.views.decorators.csrf import csrf_exempt
 # from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.permissions import BasePermission, IsAuthenticated, SAFE_METHODS
+from rest_framework.permissions import (
+    BasePermission, IsAuthenticated, SAFE_METHODS)
 # Custom module imports
 from djapi.recommender.serializers import (
     UserSerializer, GroupSerializer, UserRatingSerializer, StrainSerializer)
@@ -37,6 +38,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class StrainViewSet(viewsets.ModelViewSet):
@@ -45,6 +47,7 @@ class StrainViewSet(viewsets.ModelViewSet):
     """
     queryset = Strain.objects.all()
     serializer_class = StrainSerializer
+
 
 
 class UserRatingViewSet(viewsets.ModelViewSet):
@@ -62,9 +65,22 @@ def recommender_view(request):
     """
     if request.method == 'GET':
         data = process_request(request)
+        logger.info(request)
+        logger.info(data)
+        # check cache for predictor.  if none exists, instantiate new predictor.
+        # try:
+        #     if not cache.get('predictor'):
+        #         predictor = Predictor()
+        #     else:
+        #         predictor = cache.get('predictor')
+        # except:
+        #     print('cache unavailable?')
+        #     predictor = Predictor()
+        # Run predictor
         predictor = Predictor()
         predictor.transform(data)
         recommendation = predictor.get_recommendation()
+
         return Response(recommendation)
     else:
         return Response(status=status.HTTP_400_BAD_REQUEST)

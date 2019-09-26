@@ -1,5 +1,6 @@
 import logging
 import json
+import string
 
 
 logger = logging.getLogger(__name__)
@@ -16,9 +17,18 @@ def process_request(request):
     else:
         # print(request.data)  # Debug
         # print(request.content_type)  # Debug
-        data = request.query_params
+        data = json.dumps(request.query_params)
         logger.info(
             request.data, request.content_type, request.query_params
             )
-    print(data)
+    print(type(data), data)
+    data = strip_string(data)
+    print(type(data), data)
+    return data
+
+
+def strip_string(data):
+    if type(data) == str:
+        return data.translate(str.maketrans('', '', string.punctuation))
+
     return data

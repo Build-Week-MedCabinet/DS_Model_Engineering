@@ -9,23 +9,24 @@ import os
 
 import pandas as pd
 import os
-
+# model and vectorizer requirements
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.neighbors import NearestNeighbors
 from sklearn.decomposition import PCA
-
 import spacy
 from spacy.tokenizer import Tokenizer
-
+# caching libraries and utility functions
+from django.core.cache import cache
+from djapi.recommender.caching import cache_file
 
 ##################
 ##SET PARAMETERS##
 ##################
 params = {
-    'model': 'knn_04.pkl',
-    'vectorizer': 'vectorizer_04.pkl',
-    'clean_data': 'cannabis.csv',
+    'model': 'knn_05.pkl',
+    'vectorizer': 'vectorizer_05.pkl',
+    'clean_data': 'cannabis_02.csv',
 }
 
 
@@ -34,18 +35,14 @@ params = {
 ###################
 class Predictor():
     def __init__(self, model=None, vectorizer=None):
-        self.model = pickle.load(open(
-            get_abs_path(params['model']), 'rb',
-        ))
-        self.vectorizer = pickle.load(open(
-            get_abs_path(params['vectorizer']), 'rb',
-        ))
+        self.model = load_file('model')
+        self.vectorizer = load_file('vectorizer')
 
     def transform(self, raw_input):
         self.raw_input = raw_input
         vinput = pd.DataFrame(
             self.vectorizer.transform(
-            pd.Series(raw_input)
+                pd.Series(raw_input)
             ).todense()
         )
 
@@ -90,3 +87,18 @@ def get_abs_path(filename, **kwargs):
         return os.path.join(
             os.getcwd(), 'djapi/recommender/'+filename,
         )
+
+
+def get_file(file_key):
+    if cache_file(file_key):
+        return cache.get(file_key)
+    else:
+        cache_file(file_key, load_file(file_key))
+
+    return cache.get(file_key)
+
+
+def load_file(file_key):
+    with open(get_abs_path(params[file_key]), 'rb') as f:
+        opened = pickle.load(f)
+    return opened

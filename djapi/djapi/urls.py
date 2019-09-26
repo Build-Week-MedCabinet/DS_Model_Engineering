@@ -18,6 +18,7 @@ from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework import routers
 from djapi.recommender import views
+from djapi.recommender import caching
 
 
 router = routers.DefaultRouter()
@@ -33,3 +34,5 @@ urlpatterns = [
     path('recommend/', views.recommender_view),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
+
+# caching.one_time_startup()

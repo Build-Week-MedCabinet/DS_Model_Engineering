@@ -139,25 +139,56 @@ REST_FRAMEWORK = {
 
 
 # Logging Configuration
-LOGGING = {
+import logging
+from django.utils.log import DEFAULT_LOGGING
+
+# Disable Django's logging configuration
+LOGGING_CONFIG = None
+
+LOGLEVEL = os.environ.get('LOGLEVEL', 'info').upper()
+
+logging.config.dictConfig({
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '%(name)-12s %(levelname)-8s %(message)s'
+        },
+        'file': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+        }
+    },
     'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console'
+        },
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': LOG_FILE,
-        },
+            'formatter': 'file',
+            'filename': 'logs/debug.log'
+        }
     },
     'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
-            'propagate': True,
+        '': {
+            'level': 'WARNING',
+            'handlers': ['console', 'file']
         },
-    },
-}
-
+        # Capture all application logs
+        'recommender': {
+            'level': LOGLEVEL,
+            'handlers': ['console', 'file'],
+            'propogate': False
+        },
+        # Prevent noisy models from logging
+        'noisy_module': {
+            'level': 'ERROR',
+            'handlers': ['console'],
+            'progogate': False
+        },
+    }
+})
 
 # Configuring Whitenoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -167,3 +198,64 @@ django_heroku.settings(locals())
 
 # Workaround for local development (removing ssl requirement from sqlite3)
 del DATABASES['default']['OPTIONS']['sslmode']
+
+
+# Setting up cache
+def get_cache():
+  try:
+    servers = os.environ['MEMCACHIER_SERVERS']
+    username = os.environ['MEMCACHIER_USERNAME']
+    password = os.environ['MEMCACHIER_PASSWORD']
+    return {
+      'default': {
+        # 'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
+        # 'BACKEND': 'django_bmemcached.memcached.BMemcached',
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',  # Memcached wont' work for large fiels
+        # TIMEOUT is not the connection timeout! It's the default expiration
+        # timeout that should be applied to keys! Setting it to `None`
+        # disables expiration.
+        'TIMEOUT': None,
+        'LOCATION': servers,
+        'OPTIONS': {
+          'binary': True,
+          'username': username,
+          'password': password,
+          'behaviors': {
+            # Enable faster IO
+            'no_block': True,
+            'tcp_nodelay': True,
+            # Keep connection alive
+            'tcp_keepalive': True,
+            # Timeout settings
+            'connect_timeout': 2000, # ms
+            'send_timeout': 750 * 1000, # us
+            'receive_timeout': 750 * 1000, # us
+            '_poll_timeout': 2000, # ms
+            # Better failover
+            'ketama': True,
+            'remove_failed': 1,
+            'retry_timeout': 2,
+            'dead_timeout': 30,
+          }
+        }
+      }
+    }
+  except:
+    return {
+      'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+      }
+    }
+
+CACHES = get_cache()
+
+# Versioning
+import djapi
+import subprocess
+
+try:
+    djapi.__build__ = subprocess.check_output(
+        ["git", "describe", "--tags", "--always"], cwd=BASE_DIR
+        ).decode('utf-8').strip()
+except:
+    djapi.__build__ = djapi.__version__ + " ?"
