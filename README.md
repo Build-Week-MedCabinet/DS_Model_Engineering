@@ -53,11 +53,33 @@ IP address and port are optional parameters for runserver.
 
 ## Running the tests
 
-Automated tests(if available) and tests for backend
+### Custom Tests
+
+A tests.py file is available in djapi/recommender/.  The custom tests will require an active django instance running at available port and configured through params at the top of the file.  Change 'devURL': http://<IPAddress>:<Port>/ to the instance address.  http:// prefix is required for context in the requests library.
+
+Run the tests with
+
+```python
+python tests.py
+```
+
+Test logging stored in tests/test_log.txt
 
 ## Deployment
 
-Not currently deployed.  Deployment notes here.
+Currently deployed to Heroku [https://morning-badlands-32563.herokuapp.com](https://https://morning-badlands-32563.herokuapp.com)
+
+### Accessing the API
+
+All endpoints are active, but not populated as of v0.1.  Users, groups, strains, and userrating are available but not in use.  Available for testing purposes only.
+
+#### Recommender
+
+You can access the recommender api by passing a search string to:
+
+<div>
+  <a href="https://morning-badlands-32563.herokuapp.com/recommend?some text">https://morning-badlands-32563.herokuapp.com/recommend?some text</a>
+</div>
 
 ## Built With
 
