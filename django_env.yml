@@ -4,7 +4,7 @@ channels:
 - defaults
 - conda-forge
 dependencies:
-# - gunicorn
+- gunicorn
 - matplotlib=3.0.3
 - numpy=1.16.2
 - pandas=0.25.1
