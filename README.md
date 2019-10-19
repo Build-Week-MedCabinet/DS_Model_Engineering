@@ -8,6 +8,13 @@
 **Source List** of used data:
 
 * [Kaggle - Cannabis Strains](https://www.kaggle.com/kingburrito666/cannabis-strains)
+* [Analytical 360](#) Update Link
+* [Psi Labs](#) Update Link
+* [SC Labs](#) Update Link
+
+**Papers/Articles** For various algorithms:
+
+* Paper A, B, C, etc...
 
 ## Getting Started
 
