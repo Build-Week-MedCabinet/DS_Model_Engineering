@@ -95,9 +95,10 @@ The current project is pre-alpha and not yet versioned (default 0.0.1)
 
 ## Authors
 
-* **Steve Elliott** - *Transformation & Loading* - [GitHubLink](https://github.com/)
-* **Vincent Brandon** - *Django API* - [GitHubLink](https://github.com/)
-* **Eric Wuerfel** - *Recommender Engine* - GitHubLink
+* **Gabriel Flomo** - ** - [GitHubLink](https://github.com)
+* **Matthew Mauney** - ** - [GitHubLink](https://github.com/)
+* **Vincent Brandon** - ** - [GitHubLink](https://github.com/)
+* **Zorigo** - ** - [GitHubLink](https://github.com)
 
 *TODO*
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
