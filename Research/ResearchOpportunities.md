@@ -17,3 +17,7 @@ Using pharmacokic studies and anecdotal evidence, build an evidence-based dosing
 > **Prescription Options**
 
 Match off the shelf product to available prescription medications (route, intent, effect)
+
+> **Medical Conditions**
+
+Model medical condition descriptions -> prognsosis -> yes/no for cannabis option and if yes, component weights in prediction
