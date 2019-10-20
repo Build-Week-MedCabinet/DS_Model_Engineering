@@ -13,3 +13,7 @@ Using data from "The Association between Cannabis Product Characteristics and Sy
 > **Dosing Advice**
 
 Using pharmacokic studies and anecdotal evidence, build an evidence-based dosing scheduler for effects and time
+
+> **Prescription Options**
+
+Match off the shelf product to available prescription medications (route, intent, effect)
