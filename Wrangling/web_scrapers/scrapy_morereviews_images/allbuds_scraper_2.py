@@ -59,6 +59,10 @@ class AllbudSpider2(scrapy.Spider):
         strain_desc = clean_string(response.css(DESC_TEXT_SELECTOR).extract_first())
         strain_name = clean_string(response.css(STRAIN_NAME_SELECTOR).get())
         strain_effects = None # Implement
+        strain_flavors = None # ' '.join(set(Flavors + Aromas)))
+        strain_thc = None
+        strain_cbd = None
+        strain_type = None
 
 
         # Write to file
