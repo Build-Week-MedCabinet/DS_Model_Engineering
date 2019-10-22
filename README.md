@@ -14,12 +14,6 @@
 
 **Papers/Articles** For various algorithms:
 
-* Paper A, B, C, etc...
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Important Links
 
 * [Build-Week-Med-Cabinet Repository](https://github.com/Build-Week-Med-Cabinet/DS)
@@ -33,72 +27,9 @@ Anaconda or MiniConda or Pip
 
 ### Installing
 
-This application does not need to be installed.  It will run as a stanalone server with provided directories in this repository.
-
-#### Django development environment
-
-* Conda: Create a conda environment for the django application with
-
-```python
-conda env create -f django_env.yml
-```
-
-* Run server with
-
-```python
-python manage.py runserver <ip_address>:<port>
-```
-
-IP address and port are optional parameters for runserver.
+Link-To-Environment.yml
 
 
-#### ETL development environment
-
-
-#### Predictor development environment
-
-
-## Running the tests
-
-### Custom Tests
-
-A tests.py file is available in djapi/recommender/.  The custom tests will require an active django instance running at available port and configured through params at the top of the file.  Change 'devURL': http://<IPAddress>:<Port>/ to the instance address.  http:// prefix is required for context in the requests library.
-
-Run the tests with
-
-```python
-python tests.py
-```
-
-Test logging stored in tests/test_log.txt
-
-## Deployment
-
-Currently deployed to Heroku [https://morning-badlands-32563.herokuapp.com](https://https://morning-badlands-32563.herokuapp.com)
-
-### Accessing the API
-
-All endpoints are active, but not populated as of v0.1.  Users, groups, strains, and userrating are available but not in use.  Available for testing purposes only.
-
-#### Recommender
-
-You can access the recommender api by passing a search string to:
-
-<div>
-  <a href="https://morning-badlands-32563.herokuapp.com/recommend/?some text">https://morning-badlands-32563.herokuapp.com/recommend/?some text</a>
-</div>
-
-## Built With
-
-* [Django](https://www.djangoproject.com/) - The web framework used
-* [Django REST framework](https://www.django-rest-framework.org) - API endpoint extension for Django
-* [Jupyter](https://jupyter.org/) - Test ETL's and Develop Predictive Model
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-The current project is pre-alpha and not yet versioned (default 0.0.1)
 
 ## Authors
 
