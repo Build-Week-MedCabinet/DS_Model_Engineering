@@ -1,6 +1,7 @@
 # Directory patterns to ignore
 **/logs
 **/__pycache__
+**./vscode
 
 # File patterns to ignore
 *.log
