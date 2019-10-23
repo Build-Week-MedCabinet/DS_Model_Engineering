@@ -11,3 +11,13 @@
 *.sqlite3
 *.cpython
 *.jpg
+Wrangling/Intermediate_data/combine_all-Copy1.ipynb
+Wrangling/Intermediate_data/allsources_alltypes.csv
+Wrangling/Intermediate_data/allsources_filtered.csv
+Wrangling/Intermediate_data/combine_all.ipynb
+Wrangling/Intermediate_data/.ipynb_checkpoints/allsources_alltypes-checkpoint.csv
+Wrangling/Intermediate_data/.ipynb_checkpoints/allsources_filtered-checkpoint.csv
+Wrangling/Intermediate_data/.ipynb_checkpoints/combine_all-checkpoint.ipynb
+Wrangling/Intermediate_data/.ipynb_checkpoints/combine_all-Copy1-checkpoint.ipynb
+Wrangling/Intermediate_data/.ipynb_checkpoints/left_merged-checkpoint.csv
+Wrangling/Intermediate_data/.ipynb_checkpoints/processed_kaggle_allbuds-checkpoint.csv
