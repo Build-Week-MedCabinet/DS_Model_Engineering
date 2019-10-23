@@ -25,27 +25,43 @@ class Predictor():
         self.model = load_file('model')
         self.vectorizer = Vectorizer()
 
-    def transform(self, raw_input):
+    def transform(self, raw_input, verbose=True):
         self.raw_input = raw_input
-        vinput = self.vectorizer.transform(raw_input)
-        self.vectorized_input = vinput # Store vinput
-        return vinput
+        self.vectorized_input = self.vectorizer.transform(raw_input)
+        self.vectorized_input = self.vectorized_input.reshape(1, -1)
+        if verbose:
+            print(self.vectorized_input.shape)
+            return self.vectorized_input
 
-    def predict(self, vectorized_input=None, size=5):
+    def predict(self, user_input=None, size=5):
+        """
+        Get model recommendations for given input.
+
+        Parameters
+        ----------
+        user_input: str or ndarray
+            string object (invokes transform) or ndarray (tries directly predicting)
+
+        size: int
+            Number of neighbors to return
+        """
         # If data available, use model to get 'size' number of predictions
-        if self.data_available(vectorized_input):
-            results = self.model.query(self.vectorized_input, n_neighbors=size)[1][0].tolist()
-            return results
+        if self.data_available(user_input):
+            distances, indices = self.model.query(self.vectorized_input, k=size)
+            return indices[0]
         else:
             raise Error
 
-    def data_available(self, vectorized_input):
-        if vectorized_input is None and self.vectorized_input is None:
+
+    def data_available(self, user_input):
+        # Check if data provided or data stored (transform invoked)
+        if user_input is None and self.vectorized_input is None:
             raise NoDataProvided
-        elif self.vectorized_input is None:
-            return False
         else:
-            self.vectorized_input = vectorized_input
+            if type(user_input) == str:
+                self.transform(user_input, verbose=False)
+            elif user_input:
+                self.vectorized_input = user_input
             return True
 
 

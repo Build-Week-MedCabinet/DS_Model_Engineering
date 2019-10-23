@@ -15,6 +15,11 @@ class nlp_model_test(unittest.TestCase):
         predictor = nlp_model.Predictor()
         self.assertIsNotNone(predictor.transform('some random text to transform'))
 
+    def test_prediction_size(self):
+        size=10
+        predictor = nlp_model.Predictor()
+        test_string = 'a beautiful bounty of energetic leaf'
+        self.assertEqual(len(predictor.predict(test_string, size=size)), size)
 
 if __name__ == "__main__":
     unittest.main()
