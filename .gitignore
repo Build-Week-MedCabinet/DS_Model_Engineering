@@ -9,7 +9,7 @@
 *.vscode
 *.pkl
 *.pyc
-*.sqlite3
+# *.sqlite3
 *.cpython
 *.jpg
 Wrangling/Intermediate_data/combine_all-Copy1.ipynb
